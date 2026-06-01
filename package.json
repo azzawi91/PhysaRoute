@@ -1,14 +1,2 @@
-{
-  "name": "physaroute-manuscript-build",
-  "version": "1.0.0",
-  "description": "Node-side tooling (docx generation) for the PhysaRoute manuscript.  See ../README.md for orientation.",
-  "private": true,
-  "author": "Mustafa Mazzawi <mazzawi1991@gmail.com>",
-  "license": "SEE LICENSE IN LICENSE",
-  "scripts": {
-    "build": "node manuscript/build_paper.js"
-  },
-  "dependencies": {
-    "docx": "^8.5.0"
-  }
-}
+// package.json has been retired and is intentionally minimal.
+{"name":"physaroute","private":true}

@@ -1,10 +1,9 @@
 # =============================================================================
-# Copyright (c) 2026 Mustafa Mazzawi.  All rights reserved.
+# Copyright (c) 2026 Mustafa Azzawi.  All rights reserved.
 #
-# This file is part of the PhysaRoute reference implementation accompanying
-# the manuscript "PhysaRoute: Slime-Mold-Inspired Adaptive Routing for
-# Energy-Efficient and Reliable Wireless Body Area Networks in Healthcare IoT"
-# (IEEE Internet of Things Journal, under review).
+# This file is part of the PhysaRoute reference implementation:
+# "PhysaRoute: Slime-Mold-Inspired Adaptive Routing for Energy-Efficient and
+#  Reliable Wireless Body Area Networks in Healthcare IoT."
 #
 # All rights reserved.  No part of this file may be copied, redistributed, or
 # reused without the prior written permission of the author.  See LICENSE for

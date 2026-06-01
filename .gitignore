@@ -15,40 +15,11 @@ venv/
 env/
 .python-version
 
-# ---- Node / docx tooling ---------------------------------------------------
-node_modules/
-package-lock.json
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# ---- Simulator and figure outputs ------------------------------------------
-# These are reproducible from source — keep the folders but not the contents.
+# ---- Simulator output (reproducible — keep the folders, ignore content) ----
 figures/*
 !figures/.gitkeep
 data/*
 !data/.gitkeep
-
-# ---- LaTeX build artefacts -------------------------------------------------
-*.aux
-*.bbl
-*.blg
-*.fdb_latexmk
-*.fls
-*.log
-*.out
-*.toc
-*.synctex.gz
-*.lof
-*.lot
-*.brf
-*.pdf
-!latex/PhysaRoute_IEEE_IoTJ_Template.pdf
-
-# ---- Generated manuscript .docx files --------------------------------------
-manuscript/output/
-*.docx
-!manuscript/templates/*.docx
 
 # ---- IDE / editor noise ----------------------------------------------------
 .idea/

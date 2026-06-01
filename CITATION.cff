@@ -1,11 +1,10 @@
 cff-version: 1.2.0
-message: "If you use this code or refer to its results, please cite the manuscript."
+message: "If you use this code or refer to its results, please cite the work."
 title: "PhysaRoute: Slime-Mold-Inspired Adaptive Routing for Energy-Efficient and Reliable Wireless Body Area Networks in Healthcare IoT"
 authors:
-  - family-names: "Mazzawi"
+  - family-names: "Azzawi"
     given-names: "Mustafa"
     email: "mazzawi1991@gmail.com"
-    affiliation: "Zoni Language Center"
 type: software
 license: "All rights reserved"
 repository-code: "https://github.com/mazzawi/physaroute"
@@ -14,9 +13,8 @@ abstract: >
   routing protocol for healthcare Wireless Body Area Networks (WBANs).
   Includes the event-driven simulator, the eight-baseline comparison
   pipeline (PhysaRoute, AODV, M-ATTEMPT, ACO-WBAN, GWO-WBAN, PSO-Energy,
-  DARE-IoT, PZ-2021, RL-WBAN), the publication-grade figure and table
-  generation scripts, the manuscript build pipeline (docx), and the
-  IEEE IoTJ LaTeX template.
+  DARE-IoT, PZ-2021, RL-WBAN), and the publication-grade figure and
+  table generation scripts.
 keywords:
   - wireless body area network
   - WBAN
@@ -28,14 +26,3 @@ keywords:
   - energy efficiency
   - remote patient monitoring
   - intensive-care telemetry
-preferred-citation:
-  type: article
-  title: "PhysaRoute: Slime-Mold-Inspired Adaptive Routing for Energy-Efficient and Reliable Wireless Body Area Networks in Healthcare IoT"
-  authors:
-    - family-names: "Mazzawi"
-      given-names: "Mustafa"
-      email: "mazzawi1991@gmail.com"
-      affiliation: "Zoni Language Center"
-  journal: "IEEE Internet of Things Journal"
-  year: 2026
-  notes: "Under review"
