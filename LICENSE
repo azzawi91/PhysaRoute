@@ -1,0 +1,33 @@
+Copyright (c) 2026 Mustafa Mazzawi.  All rights reserved.
+
+This repository — including the source code, the simulator, the figure and
+table generation pipeline, the manuscript build scripts, the LaTeX template,
+and the bibliography — is the intellectual property of Mustafa Mazzawi.
+
+NO PART of this repository may be copied, modified, redistributed, reused, or
+incorporated into another work, in source or in any other form, without the
+prior, explicit, written permission of the author.
+
+The repository is provided "as is", without warranty of any kind, express or
+implied, including but not limited to the warranties of merchantability,
+fitness for a particular purpose, and non-infringement.  In no event shall the
+author be liable for any claim, damages, or other liability arising from the
+use or distribution of this repository.
+
+Permission to read the repository for the purpose of peer review of the
+manuscript
+
+    "PhysaRoute: Slime-Mold-Inspired Adaptive Routing for Energy-Efficient and
+     Reliable Wireless Body Area Networks in Healthcare IoT"
+
+is hereby granted to the editor and the assigned reviewers of IEEE Internet of
+Things Journal (IoTJ).  This grant covers reading and execution of the code for
+verification of the published results only, and does not extend to copying,
+modification, or redistribution.
+
+For any other use, contact the author:
+
+    Mustafa Mazzawi
+    Email: mazzawi1991@gmail.com
+
+All rights reserved.

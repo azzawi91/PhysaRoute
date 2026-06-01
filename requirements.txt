@@ -1,0 +1,15 @@
+# Python dependencies for the PhysaRoute simulator and analysis pipeline.
+# Tested with Python 3.10–3.12.
+#
+# Install with:
+#     python -m pip install -r requirements.txt
+#
+# For systems where pip is locked (e.g. PEP 668 marked environments), use:
+#     python -m pip install -r requirements.txt --break-system-packages
+# or, preferably, create a virtual environment first.
+
+numpy>=1.24
+scipy>=1.10
+matplotlib>=3.7
+pandas>=2.0
+python-docx>=1.0
