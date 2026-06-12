@@ -1,0 +1,32 @@
+# =============================================================================
+# PhysaRoute protocol parameters (default operating point).
+# Every reported figure and table is reproducible from this file.
+# Master seed: 20260425 — see params/seeds.csv.
+# =============================================================================
+
+# --- Conductance dynamics ----------------------------------------------------
+mu:       0.05      # decay rate                       — Section 5.2, Eq. (7)
+alpha:    0.02      # learning rate                    — Section 5.2, Eq. (7)
+gamma:    2.0       # sigmoid exponent                 — Section 5.2, Eq. (7)
+D_min:    0.05      # pruning threshold                — Section 5.2
+
+# --- Fitness mixing weights (must sum to 1) ---------------------------------
+beta_1:   0.35      # residual-energy weight   R_j     — Section 5.3, Eq. (8)
+beta_2:   0.30      # packet-success weight    P̂_succ  — Section 5.3, Eq. (8)
+beta_3:   0.20      # 1 − shadowing weight     1−Ŝ_ij  — Section 5.3, Eq. (8)
+beta_4:   0.15      # criticality weight       c_j     — Section 5.3, Eq. (8)
+
+# --- Forwarding (softmax over conductances) ---------------------------------
+theta_default: 0.10  # temperature, steady state      — Section 5.4, Eq. (9)
+theta_startup: 0.50  # temperature, first 30 packets  — Section 5.4
+
+# --- Update and exploration timing ------------------------------------------
+tau_ms:           100   # update-window length (ms)    — Section 5.2
+tau_explore_s:    30    # exploration-probe period (s) — Section 5.5
+startup_pkts:     30    # warm-up packet count
+
+# --- Theoretical analysis (Section 6 / Supplementary Material) --------------
+L_psi_at_gamma_2: 0.5         # closed-form Lipschitz constant
+rho_default:      0.985       # contraction ratio
+delta_F_normal:   0.03        # fitness drift, between transitions
+delta_F_postural: 0.30        # fitness drift, during postural transition

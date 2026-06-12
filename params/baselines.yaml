@@ -1,0 +1,56 @@
+# =============================================================================
+# Baseline-protocol parameters.
+# All eight baselines share the same channel model, energy budget, and seed
+# discipline as PhysaRoute (master seed 20260425) so paired comparisons are
+# valid; only routing logic differs.
+# =============================================================================
+
+PhysaRoute:                              # see params/physaroute.yaml
+  description: "Reinforcement-and-pruning conductance update with softmax forwarding."
+
+RL-WBAN:                                  # Q-learning baseline
+  description:        "Tabular Q-learning; state = (residual-energy bucket, last-RSSI bucket)."
+  gamma:              0.9
+  epsilon_greedy:     0.10
+  reward_on_ack:      1.0
+  cost_per_tx_unit:   0.01
+
+PZ-2021:                                  # Pourmohammad-Zia et al. 2021
+  description:        "Discrete-firefly QoS-aware bio-inspired routing."
+  swarm_size:        20
+  alpha:              0.3
+  gamma:              0.5
+
+DARE-IoT:                                 # Hassan et al. 2021
+  description:        "Two-class (high/low criticality) forwarding tables."
+  classes:            ["high-criticality", "low-criticality"]
+  reoptimisation_s:    2.0
+
+PSO-Energy:                               # Singh 2017 successors-of-LEACH
+  description:        "Particle-swarm cluster-head selection."
+  swarm_size:         20
+  cognitive:           1.4
+  social:              1.6
+  inertia:             0.7
+  reoptimisation_s:    5.0
+
+GWO-WBAN:                                 # Mirjalili et al. 2014
+  description:        "Grey-wolf-optimizer cluster head selection."
+  wolf_count:          8
+  reoptimisation_s:    5.0
+
+ACO-WBAN:                                 # Singh & Al-Turjman 2016
+  description:        "Ant-colony-optimization with WBAN parameter tuning."
+  ants:               20
+  evaporation_rho:     0.1
+  alpha:               1.0
+  beta:                2.0
+
+M-ATTEMPT:                                # Javaid et al. 2015 (iM-SIMPLE)
+  description:        "Energy-efficient multi-hop tree to single sink."
+  recomputation_s:     5.0
+
+AODV:                                     # Perkins & Royer 1999
+  description:        "Reactive on-demand distance-vector routing."
+  hello_interval_s:    1.0
+  active_route_timeout_s: 3.0

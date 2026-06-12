@@ -1,20 +1,28 @@
 Copyright (c) 2026 Mustafa Azzawi.  All rights reserved.
 
-This repository — including the source code, the simulator, and the figure
-and table generation pipeline — is the intellectual property of Mustafa
-Mazzawi.
+This repository — including the source code, the simulator, the calibration
+script, the parameter files, the seed list, the experiment-reproduction
+Makefile, and the figure-generation scripts — is the intellectual property of
+Mustafa Azzawi.
 
 NO PART of this repository may be copied, modified, redistributed, reused, or
 incorporated into another work, in source or in any other form, without the
 prior, explicit, written permission of the author.
 
+PEER-REVIEW READING GRANT.  Permission to read the repository, run the
+Makefile end-to-end, and inspect the resulting figures and data files for the
+sole purpose of peer-reviewing the accompanying manuscript is hereby granted.
+This grant covers reading and execution for verification of the published
+results only.  It does NOT extend to copying, modification, redistribution,
+or incorporation of any portion of the repository into another work.
+
 The repository is provided "as is", without warranty of any kind, express or
 implied, including but not limited to the warranties of merchantability,
-fitness for a particular purpose, and non-infringement.  In no event shall the
-author be liable for any claim, damages, or other liability arising from the
-use or distribution of this repository.
+fitness for a particular purpose, and non-infringement.  In no event shall
+the author be liable for any claim, damages, or other liability arising from
+the use or distribution of this repository.
 
-For any use, contact the author:
+For any use beyond the peer-review reading grant above, contact the author:
 
     Mustafa Azzawi
     Email: mazzawi1991@gmail.com

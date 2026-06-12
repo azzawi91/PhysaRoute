@@ -1,39 +1,11 @@
-# =============================================================================
-# PhysaRoute — .gitignore
-# =============================================================================
-
-# ---- Python ----------------------------------------------------------------
 __pycache__/
-*.py[cod]
-*.pyo
-*.egg-info/
-.eggs/
-build/
-dist/
+*.pyc
 .venv/
-venv/
-env/
-.python-version
-
-# ---- Simulator output (reproducible — keep the folders, ignore content) ----
-figures/*
-!figures/.gitkeep
-data/*
-!data/.gitkeep
-
-# ---- IDE / editor noise ----------------------------------------------------
-.idea/
-.vscode/
-*.swp
-*.swo
+.ipynb_checkpoints/
+node_modules/
 .DS_Store
 Thumbs.db
-
-# ---- OS noise --------------------------------------------------------------
-ehthumbs.db
-desktop.ini
-
-# ---- Local secrets / configuration -----------------------------------------
-.env
-.env.local
-*.local
+.vscode/
+.idea/
+.~lock.*
+*.tmp

@@ -1,0 +1,26 @@
+# Master seed: 20260425. Each experiment uses 30 derived seeds.
+# Per-cell seed = master + offset_base + cell_index, where cell_index runs
+# 0..29 for the 30 runs. The "Used for" column points to the manuscript section
+# whose figure or table consumes those seeds.
+experiment,offset_base,n_seeds,used_for
+pdr_vs_mobility,0,30,Section 8.1 / Fig. 4 — PDR vs walking speed
+residual_energy,30,30,Section 8.2 / Fig. 5 — residual energy over time
+network_lifetime,60,30,Section 8.2 / Fig. 6 — first-node-death + 50%-depletion
+latency_vs_load,90,30,Section 8.3 / Fig. 7 — latency vs offered load
+convergence,120,30,Section 8.4 / Fig. 8 — six-path convergence
+throughput,150,30,Section 8.5 / Fig. 9 — throughput vs rate
+icu_72h,180,30,Section 9 / Table IV — ICU continuous-monitoring scenario
+ablation,200,30,Appendix A — four-arm ablation
+coexistence_0pct,300,30,Appendix B — 0% BLE interferer airtime
+coexistence_25pct,330,30,Appendix B — 25% BLE interferer airtime
+coexistence_50pct,360,30,Appendix B — 50% BLE interferer airtime
+coexistence_75pct,390,30,Appendix B — 75% BLE interferer airtime
+failure_3_0mps,420,30,Appendix C — v=3.0 m/s failure case
+failure_3_5mps,450,30,Appendix C — v=3.5 m/s failure case
+failure_4_0mps,480,30,Appendix C — v=4.0 m/s failure case
+sybil_0pct,500,30,Appendix F — 0% compromised neighbours
+sybil_10pct,510,30,Appendix F — 10% compromised neighbours
+sybil_20pct,520,30,Appendix F — 20% compromised neighbours
+sybil_30pct,530,30,Appendix F — 30% compromised neighbours
+jamming_node7,540,30,Appendix F — persistent single-node jamming
+effect_sizes,0,30,Cohen's d + Holm-Bonferroni table (shares offset_base with pdr_vs_mobility for paired comparisons at v=1 m/s)

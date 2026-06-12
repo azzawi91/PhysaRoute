@@ -1,0 +1,58 @@
+# =============================================================================
+# Simulation-environment parameters.
+# Master seed: 20260425.
+# =============================================================================
+
+# --- Topology ----------------------------------------------------------------
+N_sensors:          12         # body-worn sensor nodes
+gateway_count:       1         # belt-worn sink
+total_nodes:        13         # = N_sensors + gateway
+
+# --- Physical layer (IEEE 802.15.6 CM3 on-body) ------------------------------
+channel_model:           "IEEE 802.15.6 CM3"
+frequency_GHz:           2.4
+PHY_mode:                "Narrowband"
+PHY_data_rate_kbps:      971.4
+packet_bytes:            96     # 8-byte header + 88-byte payload
+ACK_mandatory:           true
+
+# --- Channel calibration (anchors from Yazdandoost & Sayrafian-Pour 2010) ----
+PL0_dB:                  35.5   # path loss at d0 = 0.10 m
+path_loss_exponent_np:    3.4   # on-body CM3 exponent
+shadowing_sigma_static_dB: 1.8  # σ_S during static posture
+shadowing_sigma_motion_dB: 5.6  # σ_S during 3 m/s motion
+noise_floor_dBm:         -95.0  # receiver noise floor at NB rate
+
+# --- Mobility ----------------------------------------------------------------
+mobility_model:          "patient posture / walking"
+velocity_max_mps:        3.0    # in-calibration regime
+velocity_off_calib_mps:  4.0    # failure-case regime (Appendix C)
+
+# --- Energy (CR2032 daily routing-radio budget — Section 7.3) ---------------
+E_daily_J:               6.0
+duty_cycle:              0.015     # 1.5%
+design_life_years:       5
+nominal_cell_capacity_J: 2484      # 230 mAh × 3.0 V
+E_elec_nJ_per_bit:        50
+E_amp_pJ_per_bit_m2:    100
+E_amp_pJ_per_bit_m4:      0.0013
+E_idle_mW:                1.8
+E_tx_neg10dBm_nJ_per_bit: 8.4
+E_tx_0dBm_nJ_per_bit:    17.1
+E_rx_nJ_per_bit:          6.3
+
+# --- Run schedule ------------------------------------------------------------
+simulation_duration_s:   1000
+runs_per_cell:             30      # 30 seeded runs per metric × baseline
+master_seed:        20260425       # see params/seeds.csv for per-cell offsets
+
+# --- Operating-point sweeps reported in the manuscript ----------------------
+velocity_sweep_mps:       [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
+load_sweep_pkts_s:        [5, 10, 20, 40, 80, 120, 160]
+throughput_rate_sweep:    [5, 10, 20, 40, 80, 120, 160, 200]
+ble_airtime_sweep:        [0.0, 0.25, 0.50, 0.75]
+sybil_fraction_sweep:     [0.0, 0.10, 0.20, 0.30]
+failure_case_velocities:  [3.0, 3.5, 4.0]
+default_operating_point:
+  velocity_mps:  1.0
+  load_pkts_s:   80

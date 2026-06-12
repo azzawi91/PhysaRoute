@@ -1,114 +1,137 @@
-# PhysaRoute — Reference Implementation
+# PhysaRoute — Reproduction Repository
 
-**Slime-Mold–Inspired Adaptive Routing for Energy-Efficient and Reliable Wireless Body Area Networks in Healthcare IoT**
-
-Reference implementation and simulator for the PhysaRoute adaptive routing protocol. The simulator reproduces every figure and statistical table presented in the accompanying research work from a single master seed.
+**A Reinforcement-and-Pruning Adaptive Routing Protocol for Healthcare Wireless Body Area Networks.**
 
 > **© 2026 Mustafa Azzawi. All rights reserved.**
 > Contact: mazzawi1991@gmail.com
-> See [LICENSE](LICENSE) for the full terms — this is **not** an open-source release; reuse requires the author's written permission.
+> Licence: see [LICENSE](LICENSE) — peer-review reading grant only; no redistribution.
 
----
+This repository implements the data-availability statement of the manuscript verbatim: every figure, every table, every reported number in the paper is reproducible from a clean clone by running `make`.
 
-## What is in this repository
+The repository contains, in line with the article's promise:
 
-| Folder | What it contains |
+| What the article promises | Where it lives in this repo |
 | --- | --- |
-| `src/` | The Python event-driven WBAN simulator (`physaroute_sim.py`) that produces every figure and CSV reported in the research. |
-| `docs/` | Step-by-step usage guide ([`HOWTO.md`](docs/HOWTO.md)). |
-| `figures/` | Output target for figures (PNG, 300 dpi). Git-ignored. |
-| `data/` | Output target for CSV data and statistical tables. Git-ignored. |
-| `CITATION.cff` | GitHub-rendered citation metadata. |
-| `Makefile` | One-command build (`make` → install + simulate). |
+| The complete simulator | [`src/physaroute_sim_v2.py`](src/physaroute_sim_v2.py) |
+| The calibration script | [`src/calibrate_channel.py`](src/calibrate_channel.py) |
+| The experiment-reproduction Makefile | [`Makefile`](Makefile) |
+| Every parameter file | [`params/physaroute.yaml`](params/physaroute.yaml), [`params/baselines.yaml`](params/baselines.yaml), [`params/simulation.yaml`](params/simulation.yaml) |
+| The full 30-seed list per experiment | [`params/seeds.csv`](params/seeds.csv) |
+| The figure-generation scripts | [`src/plot_figures.py`](src/plot_figures.py) |
 
 ---
 
-## Quick start
+## One-command reproduction
 
 ```bash
-git clone https://github.com/mazzawi/physaroute.git
-cd physaroute/practical
+git clone https://github.com/azzawi91/PhysaRoute.git
+cd PhysaRoute
 
-make                 # install deps + run the simulator
-# or, individually:
-make install         # install Python dependencies
-make simulate        # run the simulator → figures/ and data/
-make clean           # wipe generated artefacts
+make                 # install → calibrate → simulate → figures
 ```
 
-For a guided walkthrough see [docs/HOWTO.md](docs/HOWTO.md).
+`make` runs the four steps below in order. Each can be run individually if you want to inspect intermediate artefacts:
+
+```bash
+make install         # python3 -m pip install -r requirements.txt
+make calibrate       # src/calibrate_channel.py → data/calibration.csv
+make simulate        # src/physaroute_sim_v2.py → data/*.csv  (≈ 5 s)
+make figures         # src/plot_figures.py     → figures/*.png
+make clean           # wipe data/ and figures/
+```
+
+After `make` finishes you should see eleven publication-quality PNGs in `figures/` and the matching raw-data CSVs in `data/`.
 
 ---
 
-## What the simulator reproduces
+## What gets reproduced
 
-The PhysaRoute conductance-update dynamic is benchmarked against eight WBAN routing baselines on a 12-node simulated body network under the IEEE 802.15.6 CM3 channel:
+The simulator and the figure pipeline together produce:
 
-| Metric | PhysaRoute gain |
-| --- | --- |
-| Packet delivery ratio | **+13.6 %** over AODV; +3.8 % over the strongest baseline (averaged across 0–3 m/s mobility) |
-| Time to first node death | **1.96 ×** over M-ATTEMPT; 1.21 × over RL-WBAN |
-| End-to-end latency | **−30 to −56 %** depending on offered load |
-| Saturation throughput | **+25.8 %** over PSO-Energy |
-| Convergence to ε-optimal | **≈ 7 s** (analytical) / 6.4 ± 0.7 s (empirical) |
-| ICU VT alarm latency | **480 ms → 220 ms**, within IEC 60601-2-27 envelope |
-
-All numbers are reproducible from clean using the master seed `20260425`; the full 30-seed table is in `docs/HOWTO.md`.
-
----
-
-## How to cite
-
-If you reference the work, please cite the research:
-
-> Mustafa Azzawi, "PhysaRoute: Slime-Mold-Inspired Adaptive Routing for Energy-Efficient and Reliable Wireless Body Area Networks in Healthcare IoT," 2026.
-
-GitHub will render the citation widget from [`CITATION.cff`](CITATION.cff).
+| Quantity | Source file (in `data/`) | Figure (in `figures/`) |
+| --- | --- | --- |
+| PDR vs walking speed                          | `pdr_vs_mobility.csv`  | `fig_pdr_vs_mobility.png` |
+| Mean residual energy over time                | `residual_energy.csv`  | `fig_energy_vs_time.png` |
+| End-to-end latency vs offered load            | `latency_vs_load.csv`  | `fig_latency_vs_load.png` |
+| Network lifetime (FND ± SD)                   | `network_lifetime.csv` | `fig_network_lifetime.png` |
+| Conductance trajectories (six paths)          | `convergence.csv`      | `fig_convergence.png` |
+| Aggregate throughput vs rate                  | `throughput.csv`       | `fig_throughput.png` |
+| Four-arm ablation                             | `ablation.csv`         | `fig_ablation.png` |
+| Co-existence under BLE interferer             | `coexistence.csv`      | `fig_coexistence.png` |
+| Sybil + single-node jamming                   | `sybil.csv`, `jamming.csv` | `fig_sybil_jamming.png` |
+| Off-calibrated failure case (v > 3 m/s)       | `failure_case.csv`     | `fig_failure_case.png` |
+| Calibrated received-SNR CDF                   | `calibration.csv`      | `fig_calibration.png` |
+| Cohen's d + Holm-Bonferroni                   | `effect_sizes.csv`     | (table; rendered in the paper) |
 
 ---
 
-## Repository structure
+## Reproducibility guarantees
+
+- **Master seed**: `20260425`. Every experiment uses 30 derived seeds; the per-cell offsets are listed in [`params/seeds.csv`](params/seeds.csv) alongside the manuscript section that consumes them.
+- **Channel calibration**: σ_S(v) is anchored to publicly cited values from the IEEE 802.15.6 reference document (1.8 dB static, 5.6 dB at 3 m/s motion). The [`src/calibrate_channel.py`](src/calibrate_channel.py) script makes this explicit and writes its full CDF to `data/calibration.csv`.
+- **Parameters in plain text**: PhysaRoute, simulation environment, and baseline parameters are each in their own YAML file under [`params/`](params/). No "magic numbers" inside the simulator that are not also reflected in those files.
+- **No external services**: the pipeline does not contact any network endpoint. Everything runs locally on Python 3.10+ with the four packages listed in [`requirements.txt`](requirements.txt).
+- **Float-point ordering**: NumPy linked against MKL versus OpenBLAS will diverge in the fifth significant figure of some metrics. The headline conclusions (every digit reported in the manuscript) are robust to this. If you need bit-identical reproduction, pin `numpy==1.26.4` and use the Linux x86-64 wheel from PyPI.
+
+---
+
+## Folder layout
 
 ```
-practical/
-├── README.md                      ← you are here
-├── LICENSE                        ← All Rights Reserved
-├── CITATION.cff                   ← GitHub citation widget
-├── Makefile                       ← one-command build
-├── requirements.txt               ← Python deps
+PhysaRoute/
+├── README.md                          ← you are here
+├── LICENSE                            ← All Rights Reserved, peer-review reading grant
+├── CITATION.cff                       ← GitHub citation widget
+├── Makefile                           ← experiment-reproduction Makefile
+├── requirements.txt                   ← Python dependencies
 ├── .gitignore
 │
-├── docs/
-│   └── HOWTO.md                   ← step-by-step usage
+├── params/
+│   ├── physaroute.yaml                ← PhysaRoute protocol parameters
+│   ├── baselines.yaml                 ← eight baseline-protocol parameters
+│   ├── simulation.yaml                ← channel, PHY, energy, sweeps
+│   └── seeds.csv                      ← 30-seed list per experiment
 │
 ├── src/
-│   └── physaroute_sim.py          ← the simulator
+│   ├── physaroute_sim.py              ← original simulator (legacy)
+│   ├── physaroute_sim_v2.py           ← upgraded simulator (default)
+│   ├── calibrate_channel.py           ← shadowing-σ calibration script
+│   └── plot_figures.py                ← figure-generation pipeline
 │
-├── figures/                       ← simulator output (gitignored)
-└── data/                          ← simulator output (gitignored)
+├── docs/
+│   └── HOWTO.md                       ← step-by-step usage guide
+│
+├── figures/                           ← simulator output (gitignored)
+└── data/                              ← simulator output (gitignored)
 ```
 
 ---
 
 ## Requirements
 
-| Tool | Version | Purpose |
+| Tool | Minimum | Tested |
 | --- | --- | --- |
-| Python | ≥ 3.10 | Simulator + analysis pipeline |
-| `make` (optional) | GNU Make 4.x | One-command build wrapper |
+| Python | 3.10 | 3.10 — 3.12 |
+| `make` (optional) | GNU Make 4.x | 4.3 |
 
-Tested on Ubuntu 22.04, macOS 14, and Windows 11 + WSL2.
+The four Python packages we depend on (NumPy, SciPy, Matplotlib, PyYAML, pandas) install in under a minute on every platform we have tested (Ubuntu 22.04, macOS 14, Windows 11 + WSL2).
+
+---
+
+## How to cite
+
+If you use this code, please cite the paper. A `CITATION.cff` is shipped alongside this README so GitHub will render the citation widget automatically.
 
 ---
 
 ## Reporting issues
 
-Issues should be filed on the GitHub tracker (once the repo is public) or by email to mazzawi1991@gmail.com. Please include:
+Open an issue on the GitHub tracker or email `mazzawi1991@gmail.com`. Please include:
 
-- Operating system + Python version.
+- Operating system and Python version.
 - The exact command that failed.
-- The stack trace or last 30 lines of stdout.
+- The last 30 lines of stdout / stderr.
 
 ---
 
-**All rights reserved.** No portion of this repository may be copied, modified, redistributed, or incorporated into another work without the author's prior written permission.
+**All rights reserved.** This repository is released with a peer-review reading grant only. No portion may be copied, modified, redistributed, or incorporated into another work without prior written permission from the author. See [LICENSE](LICENSE) for the full text.
