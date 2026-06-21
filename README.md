@@ -1,6 +1,6 @@
 # PhysaRoute — Reproduction Repository
 
-**A Reinforcement-and-Pruning Adaptive Routing Protocol for Healthcare Wireless Body Area Networks.**
+**Slime-Mold–Inspired Adaptive Routing for Energy-Efficient and Reliable Wireless Body Area Networks in Healthcare IoT**
 
 > **© 2026 Mustafa Azzawi. All rights reserved.**
 > Contact: mazzawi1991@gmail.com
