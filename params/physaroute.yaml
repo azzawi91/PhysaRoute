@@ -1,0 +1,32 @@
+conductance:
+  mu: 0.2
+  alpha: 1.0
+  gamma: 2.0
+  D_min: 0.05
+  D_init: 2.0
+  window_ms: 100
+forwarding:
+  kappa: 2.0
+  kappa_crit: 4.0
+  hold_s: 0.05
+  hold_max_factor: 4
+tube_length:
+  lambda_E: 2.0
+  lambda_c: 1.0
+fitness:
+  beta_1_energy: 0.35
+  beta_2_success: 0.3
+  beta_3_no_shadow: 0.2
+  beta_4_not_critical: 0.15
+  sens_margin_dB: 3.0
+exploration:
+  tau_explore_s: 10.0
+  better_link_probe_threshold: 0.8
+  better_link_probe_min_interval_s: 1.0
+e2e_receipts:
+  enabled: true
+  bitmap_bits: 64
+  ewma: 0.4
+theory:
+  viability_threshold: h* = 2*mu/(alpha*F)
+  fixed_points: "D\xB1 = (k \xB1 sqrt(k^2 - 4/h^2))/2, k = alpha*F/mu"

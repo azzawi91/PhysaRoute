@@ -1,0 +1,62 @@
+AODV:
+  active_route_timeout_s: 3.0
+  rreq_timeout_s: 0.15
+  rreq_retries: 2
+  ttl: 4
+  rreq_bytes: 24
+  rrep_bytes: 20
+  rerr_bytes: 12
+M-ATTEMPT:
+  round_s: 5.0
+  critical_direct: true
+  tie_break: energy cost (linear path loss + advertised route cost)
+SIMPLE:
+  round_s: 5.0
+  cost: d(i,gw)/E_res(i)
+  critical_direct: true
+  round_frame_bytes: 24
+ACO-WBAN:
+  ant_period_s: 1.0
+  beta_data: 5.0
+  beta_ant: 1.0
+  gamma: 0.7
+  T_hop_s: 0.002
+  fail_evaporation: 0.5
+  fant_bytes: 16
+  bant_bytes: 24
+PSO-Relay:
+  period_s: 5.0
+  particles: 20
+  iterations: 40
+  inertia:
+  - 0.9
+  - 0.2
+  c1: 1.5
+  c2: 1.5
+  weights:
+  - 0.4
+  - 0.3
+  - 0.3
+  assign_frame_bytes: 40
+GWO-Relay:
+  period_s: 5.0
+  wolves: 20
+  iterations: 40
+  a:
+  - 2.0
+  - 0.0
+  weights:
+  - 0.4
+  - 0.3
+  - 0.3
+  assign_frame_bytes: 40
+QL-WBAN:
+  eta: 0.5
+  epsilon: 0.05
+  fail_penalty_s: 0.05
+  energy_penalty_s: 0.005
+  init_T_hop_s: 0.003
+QoS-2C:
+  R_req: 0.9
+  reliability_ewma: 0.4
+  ordinary_cost: d_ij^2 / E_res(j), closer-to-gateway only

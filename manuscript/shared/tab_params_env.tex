@@ -1,0 +1,38 @@
+\begin{table}[t]
+\centering
+\caption{Simulation parameters (defaults; sweeps in Section~VII of the main paper). Each also appears in the repository's configuration files.}
+\label{tab:params_s}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{1.55in}p{1.75in}@{}}
+\toprule
+Parameter & Value \\
+\midrule
+\multicolumn{2}{@{}l}{\emph{Topology and channel}} \\
+sensors / gateway & 12 / 1 (Table~\ref{tab:sensors_s}), 2\,cm placement jitter \\
+CM3 2.4\,GHz (hospital) \cite{yazdandoost2010channel} & $a=6.6$, $b=36.1$, $\sigma_N=3.8$\,dB \\
+around-body penalty & 12\,dB \\
+dynamic shadowing & $\sigma=1.0+1.7v$\,dB, $T_c=2e^{-1.23v}$\,s \\
+posture fades & rate $0.05+0.3v$\,s$^{-1}$, 10--35\,dB, mean 0.6\,s \\
+\multicolumn{2}{@{}l}{\emph{PHY and MAC}} \\
+rate / modulation / code & 971.4\,kb/s, $\pi/4$-DQPSK, BCH(63,51) \\
+TX power, NF + IL & $-10$\,dBm, 13 + 3\,dB \\
+data / ACK airtime & 1.157 / 0.437\,ms \\
+CW (data, crit., alarm, ctrl) & [8,32], [4,8], [1,4], [4,8] \\
+slot, SIFS, CCA & 145, 75, 105\,$\mu$s \\
+retries / re-routes / lifetime & 3 per hop / 3 per hop / 2\,s \\
+queue & 32 frames \\
+\multicolumn{2}{@{}l}{\emph{Energy and traffic}} \\
+TX / RX current (3\,V) \cite{nordic2021nrf52840} & 3.15 / 4.6\,mA \\
+budget per sensor & 0.5\,J \\
+aggregate load / payload & 80 packets/s (5--200 in sweeps) / 87 bytes \\
+duration / warm-up & 200 / 20\,s (1500\,s lifetime, 600\,s ICU) \\
+seeds & 30 per cell, master seed 20260425 \\
+\multicolumn{2}{@{}l}{\emph{PhysaRoute}} \\
+$\mu$, $\alpha$, $\gamma$ & 0.2, 1.0, 2 \\
+$\kappa$, $\kappa_{\mathrm{crit}}$, $D_{\min}$, $D(0)$ & 2, 4, 0.05, 2.0 \\
+$\beta_{1..4}$; $\lambda_E$, $\lambda_c$ & 0.35, 0.30, 0.20, 0.15; 2, 1 \\
+$\tau$, $\tau_{\mathrm{explore}}$, hold & 100\,ms, 10\,s, 50--200\,ms \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\caption{Control overhead, retransmissions and path length at 1 and 3\,m/s (80 packets/s): control frames per second (network-wide), control bytes per delivered packet, share of data transmissions that are retransmissions, and mean hops of delivered packets.}
+\label{tab:overhead_s}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lcccccccc@{}}
+\toprule
+& \multicolumn{4}{c}{$v=1$\,m/s} & \multicolumn{4}{c}{$v=3$\,m/s} \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+Protocol & ctrl/s & B/pkt & retx\,\% & hops & ctrl/s & B/pkt & retx\,\% & hops \\
+\midrule
+\tabinput{../shared/tab_overhead.tex}
+\bottomrule
+\end{tabular}
+\end{table}

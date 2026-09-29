@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this code or refer to its results, please cite the accompanying article and this repository."
+title: "PhysaRoute: Physarum conductance dynamics for reliable, energy-aware routing in healthcare wireless body area networks (reference simulator)"
+type: software
+version: 2.0.0
+date-released: 2026-09-28
+authors:
+  - family-names: "Azzawi"
+    given-names: "Mustafa A."
+    orcid: "https://orcid.org/0000-0002-9360-4174"
+    email: "mazzawi1991@gmail.com"
+  - family-names: "Abdulhussein"
+    given-names: "Ansam A."
+  - family-names: "Hassan"
+    given-names: "Rosilah"
+repository-code: "https://github.com/azzawi91/PhysaRoute"
+license: "LicenseRef-AllRightsReserved"
+abstract: >
+  Discrete-event simulator for adaptive routing in IEEE 802.15.6 wireless body area networks:
+  a measured-statistics body channel, CSMA/CA MAC, first-order radio energy, the PhysaRoute
+  protocol (Physarum tube-conductance dynamics with an advertised potential field, energy- and
+  criticality-aware tube length and end-to-end confirmed reinforcement) and eight baseline
+  protocols (AODV, M-ATTEMPT, SIMPLE, ACO-WBAN, PSO-Relay, GWO-Relay, QL-WBAN, QoS-2C), with the
+  experiment driver, statistics and figure pipeline that reproduce every reported number.
+keywords:
+  - wireless body area network
+  - healthcare IoT
+  - bio-inspired routing
+  - Physarum polycephalum
+  - IEEE 802.15.6
+  - discrete-event simulation

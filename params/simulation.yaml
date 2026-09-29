@@ -1,0 +1,103 @@
+topology:
+  sensors: 12
+  gateway: 1
+  placement_jitter_m: 0.02
+  distance_inflation: 1.15
+channel:
+  model: IEEE 802.15.6 CM3 2.4 GHz hospital room
+  a: 6.6
+  b: 36.1
+  sigma_N_dB: 3.8
+  nlos_extra_dB: 12.0
+  sigma_dyn_static_dB: 1.0
+  sigma_dyn_slope_dB_per_mps: 1.7
+  coherence_static_s: 2.0
+  coherence_decay_per_mps: 1.23
+  fade_rate_static_per_s: 0.05
+  fade_rate_slope_per_mps: 0.3
+  fade_depth_dB:
+  - 10
+  - 35
+  fade_duration_mean_s: 0.6
+phy:
+  rate_kbps: 971.4
+  modulation: pi/4-DQPSK
+  code: BCH(63,51)
+  tx_power_dBm: -10.0
+  noise_figure_dB: 13.0
+  implementation_loss_dB: 3.0
+  data_frame_ms: 1.1567
+  ack_frame_ms: 0.4367
+mac:
+  cw_data:
+  - 8
+  - 32
+  cw_crit:
+  - 4
+  - 8
+  cw_alarm:
+  - 1
+  - 4
+  cw_ctrl:
+  - 4
+  - 8
+  slot_us: 145
+  sifs_us: 75
+  cca_us: 105
+  max_retries_per_hop: 3
+  max_reroutes_per_hop: 3
+  max_attempts: 24
+  ttl_s: 2.0
+  queue: 32
+energy:
+  tx_current_mA_at_-10dBm: 3.15
+  rx_current_mA: 4.6
+  supply_V: 3.0
+  budget_J: 0.5
+traffic:
+  aggregate_load_pkts_s: 80
+  payload_bytes: 87
+  beacon_period_s: 2.0
+run:
+  duration_s: 200
+  warmup_s: 20
+  lifetime_duration_s: 1500
+  icu_duration_s: 600
+  seeds: 30
+  master_seed: 20260425
+sweeps:
+  velocity_mps:
+  - 0
+  - 0.5
+  - 1
+  - 1.5
+  - 2
+  - 2.5
+  - 3
+  load_pkts_s:
+  - 5
+  - 10
+  - 20
+  - 40
+  - 80
+  - 120
+  - 160
+  - 200
+  ble_airtime:
+  - 0
+  - 0.1
+  - 0.25
+  - 0.5
+  blackhole_sets:
+  - []
+  - - 8
+  - - 8
+    - 10
+  - - 8
+    - 10
+    - 11
+  jam_node: 8
+  offcalib_velocity_mps:
+  - 3.5
+  - 4.0
+  alarm_rate_per_s: 0.2
