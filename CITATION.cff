@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this code or refer to its results, please cite the accompanying article and this repository."
-title: "PhysaRoute: Physarum-inspired routing for healthcare wireless body area networks (reference simulator)"
+title: "PhysaRoute: Physarum-inspired routing for healthcare wireless body area networks"
 type: software
 version: 2.0.0
 date-released: 2026-09-28
